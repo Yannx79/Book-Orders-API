@@ -23,10 +23,10 @@ public class OrderDTO {
     private Integer idOrder;
 
     @JsonBackReference
-    private CustomerEntity customerEntity;
+    private CustomerDTO customer;
 
     @NotNull
-    private BookEntity bookEntity;
+    private BookDTO book;
 
     @NotNull
     @Min(value = 1)

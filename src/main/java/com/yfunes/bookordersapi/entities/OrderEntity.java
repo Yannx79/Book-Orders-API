@@ -20,11 +20,11 @@ public class OrderEntity {
 
     @ManyToOne
     @JoinColumn(name = "id_customer")
-    private CustomerEntity customerEntity;
+    private CustomerEntity customer;
 
     @ManyToOne
     @JoinColumn(name = "id_book")
-    private BookEntity bookEntity;
+    private BookEntity book;
 
     private Integer quantity;
 

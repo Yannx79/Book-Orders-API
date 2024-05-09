@@ -11,26 +11,28 @@ public abstract class CRUDImpl<T, K> implements ICRUD<T, K> {
 
     @Override
     public T save(T t) throws Exception {
-        return null;
+        return getRepo().save(t);
     }
 
     @Override
     public T update(T t, K k) throws Exception {
-        return null;
+        getRepo().findById(k).orElseThrow(() -> new Exception("ID NOT FOUND: " + k));
+        return getRepo().save(t);
     }
 
     @Override
     public List<T> readAll() throws Exception {
-        return null;
+        return getRepo().findAll();
     }
 
     @Override
     public T readById(K k) throws Exception {
-        return null;
+        return getRepo().findById(k).orElseThrow(() -> new Exception("ID NOT FOUND: " + k));
     }
 
     @Override
     public void delete(K k) throws Exception {
-
+        getRepo().findById(k).orElseThrow(() -> new Exception("ID NOT FOUND: " + k));
+        getRepo().deleteById(k);
     }
 }
