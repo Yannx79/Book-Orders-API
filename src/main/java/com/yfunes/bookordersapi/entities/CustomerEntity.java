@@ -3,6 +3,7 @@ package com.yfunes.bookordersapi.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -39,7 +40,7 @@ public class CustomerEntity {
     @Column(length = 8)
     private String dni;
 
-    @OneToMany(mappedBy = "customerEntity", cascade = CascadeType.ALL)
-    private Set<OrderEntity> orderEntitySet;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<OrderEntity> orderList;
 
 }

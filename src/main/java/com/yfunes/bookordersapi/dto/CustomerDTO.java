@@ -2,6 +2,7 @@ package com.yfunes.bookordersapi.dto;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.yfunes.bookordersapi.entities.OrderEntity;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -10,6 +11,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -44,7 +46,7 @@ public class CustomerDTO {
     @Min(value = 8)
     private String dni;
 
-    @JsonBackReference
-    private Set<OrderEntity> orderEntitySet;
+    @JsonManagedReference
+    private List<OrderDTO> orderList;
 
 }
