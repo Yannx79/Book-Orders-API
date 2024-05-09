@@ -1,16 +1,13 @@
 package com.yfunes.bookordersapi.services.impl;
 
 import com.yfunes.bookordersapi.entities.BookEntity;
-import com.yfunes.bookordersapi.entities.CustomerEntity;
 import com.yfunes.bookordersapi.repositories.IBookRepository;
-import com.yfunes.bookordersapi.repositories.ICustomerRepository;
 import com.yfunes.bookordersapi.repositories.IGenericRepository;
 import com.yfunes.bookordersapi.services.IBookService;
-import com.yfunes.bookordersapi.services.ICustomerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.awt.print.Book;
 
 @Service
 @RequiredArgsConstructor
@@ -21,5 +18,10 @@ public class BookServiceImpl extends CRUDImpl<BookEntity, Integer> implements IB
     @Override
     protected IGenericRepository<BookEntity, Integer> getRepo() {
         return repository;
+    }
+
+    @Override
+    public Page<BookEntity> findByPage(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 }
